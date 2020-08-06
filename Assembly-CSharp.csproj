@@ -313,6 +313,7 @@
      <Compile Include="Assets\ObjExporter.cs" />
      <Compile Include="Assets\ScanManager.cs" />
      <Compile Include="Assets\test.cs" />
+     <Compile Include="Assets\test1.cs" />
      <Compile Include="Assets\UIController.cs" />
      <None Include="Assets\HoloToolkit\Utilities\Shaders\UnlitConfigurable.shader" />
      <None Include="Assets\HoloToolkit\SpatialUnderstanding\Materials\SpatialUnderstandingSurface.shader" />
