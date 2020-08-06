@@ -79,6 +79,7 @@ namespace HoloToolkit.Unity
         /// <param name="value">Current value to show.</param>
         /// <param name="allowSceneObjects">Whether scene objects should be allowed in the set of field choices.</param>
         /// <returns>The new value.</returns>
+        [Obsolete]
         public static T ObjectField<T>(Rect position, GUIContent label, T value, bool allowSceneObjects)
         {
             object objValue = value;

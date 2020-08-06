@@ -61,6 +61,7 @@ namespace HoloToolkit.Unity
         /// </summary>
         public static event Action<BuildInfo, string> BuildCompleted;
 
+        [Obsolete]
         public static void PerformBuild(BuildInfo buildInfo)
         {
             BuildTargetGroup buildTargetGroup = GetGroup(buildInfo.BuildTarget);

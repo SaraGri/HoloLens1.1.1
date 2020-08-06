@@ -177,6 +177,7 @@ namespace HoloToolkit.Unity
         #endregion // Internal Methods
 
         #region Overrides / Event Handlers
+        [Obsolete]
         protected override void ApplySettings()
         {
             // See the blow notes for why text asset serialization is required

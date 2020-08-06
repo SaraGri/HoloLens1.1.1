@@ -3,9 +3,9 @@ using System.IO;
 using System.Text;
 using UnityEditor;
 using UnityEngine;
-using HoloToolkit.Unity.SpatialMapping;
+using HoloToolkit.Unity; //Spatial Mapping entfernt
 
-namespace HoloToolkit.Unity
+namespace HoloToolkit.Unity.SpatialMapping //Auffrischung von mir, ergänzt um SpatialMapping
 {
     public static class RoomMeshExporter
     {
