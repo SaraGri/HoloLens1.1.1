@@ -10,9 +10,7 @@ using UnityEditor;
 using UnityEngine.XR.WSA.Persistence;
 using UnityEngine.UI;
 
-/// <summary>
-/// /////////////////////////////////////
-/// </summary>
+
 public class UIController : MonoBehaviour {
 
     // WaveFrontFileErweiterung für die Speicherung in obj
@@ -99,35 +97,42 @@ public class UIController : MonoBehaviour {
     ////////////////////////////////////////////////////////////////////////////
     //Methoden von mir
 
+    /// <summary>
+    /// ///////////// SpatialMapping
+    /// </summary>
+    /// <param name="starten"></param>
     public void SpatialMappingStarten_Stoppen(bool starten)
     {
-        // Mesh visuell anzeigen lassen, hier auskommentiert, da die Meshes schon vom Spatialunderstanding angezeigt werden
-        // kann aber zur besseren Sichtbarkeit angezeigt werden
-        // spatialMappingManager.DrawVisualMeshes = true;
+        spatialMappingManager.DrawVisualMeshes = true;
 
         if (starten)
         {
             //MappingObserver starten (falls nicht schon gestartet wurde)
             spatialMappingManager.StartObserver();
-            // Spatialunderstandingmeshupdate starten
-            spatialUnderstandingCustomMesh.DrawProcessedMesh = true;
         }
         
         else
         {
-            // Der SurfaceObserver wird angewiesen das Updating vom SpatialMapping mesh zu unterlassen 
-            spatialMappingManager.StopObserver();
-            // Spatialunderstandingmeshupdate starten
-            spatialUnderstandingCustomMesh.DrawProcessedMesh = false;
+           // if (spatialMappingManager.IsObserverRunning())
+           // {
+                // Der SurfaceObserver wird angewiesen das Updating vom SpatialMapping mesh zu unterlassen 
+                spatialMappingManager.StopObserver();
+           // }
+           // else {
+               // Debug.Log("Fehler: Observer schon gestoppt");
+           // }
         }
     }
 
     //Befielt den SurfaceObserver zu stoppen und alle meshes zu cleanen
     public void AnwendungBeenden()
-    {
+    {   
         spatialMappingManager.CleanupObserver();
     }
-
+    /// <summary>
+    /// ////////////////////////////////////////
+    /// SpatialUnderstanding
+    /// </summary>
     public void UnderstandingStarten() {
         // rufe Starten aus der Klasse ScanManager
         scanManager.SpatialUnderstandingStart();

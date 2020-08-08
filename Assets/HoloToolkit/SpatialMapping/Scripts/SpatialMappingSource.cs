@@ -1,6 +1,6 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
-
+// Generates and retrieves meshes based on spatial mapping data coming from the current source object (file, observer, network)
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

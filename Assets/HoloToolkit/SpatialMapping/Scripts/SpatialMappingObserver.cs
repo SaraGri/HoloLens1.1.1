@@ -1,6 +1,6 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
-
+// Adds and updates spatial mapping data for all surfaces discovered by the SurfaceObserver running on the HoloLens.
 using System;
 using System.Collections.Generic;
 using UnityEngine;
