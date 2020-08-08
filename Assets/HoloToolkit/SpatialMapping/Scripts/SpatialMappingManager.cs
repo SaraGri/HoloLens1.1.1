@@ -1,9 +1,6 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
-// Manages interactions between the application and all spatial mapping data sources (file, observer, network).
-// class allows applications to use a SurfaceObserver or a stored Spatial Mapping mesh (loaded from a file)
-// When an application loads a mesh file, the SurfaceObserver is stopped
-// manages switching between source types and interacting with this spatialmappingsource
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -209,7 +206,6 @@ namespace HoloToolkit.Unity.SpatialMapping
         }
 
         /// <summary>
-        /// Calling StartObserver() clears the stored mesh and enables real-time SpatialMapping updates
         /// Instructs the SurfaceObserver to start updating the SpatialMapping mesh.
         /// </summary>
         public void StartObserver()

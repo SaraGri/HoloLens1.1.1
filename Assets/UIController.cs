@@ -11,7 +11,8 @@ using UnityEngine.XR.WSA.Persistence;
 using UnityEngine.UI;
 
 
-public class UIController : MonoBehaviour {
+public class UIController : MonoBehaviour
+{
 
     // WaveFrontFileErweiterung für die Speicherung in obj
     private const string WavefrontFileExtension = ".obj";
@@ -31,16 +32,18 @@ public class UIController : MonoBehaviour {
 
 
     /// /////////////////////////////////////////
-   
+
     //ref to meshSaver
     public List<GameObject> meshobjects;
     private string textName;  // Meshdateiname
-   
+
     private List<Mesh> meshFilters;
     public InputField field; // für die Texteingabe
 
+    private bool su, sm;
     // Use this for initialization
-    void Start() {
+    void Start()
+    {
         // Init ref to spatial mapping
         spatialMappingManager = spatialMapping.GetComponent<SpatialMappingManager>();
 
@@ -54,11 +57,15 @@ public class UIController : MonoBehaviour {
         //drawSpatialUnderstanding = false;
         surfaceObserver = gameObject.GetComponent<SpatialMappingObserver>();
 
-}
+        su = false;
+        sm = false;
+       
+    }
 
- 
+
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         // rufe die Methode ScanUpdate... auf um die Scanstates zu abchecken
         scanManager.ScanstateUpdate();
         // greife auf und speichere die Meshes vom SpatialUnderstanding in meshFilters
@@ -109,40 +116,75 @@ public class UIController : MonoBehaviour {
         {
             //MappingObserver starten (falls nicht schon gestartet wurde)
             spatialMappingManager.StartObserver();
+            sm = true;
         }
-        
+
         else
         {
-           // if (spatialMappingManager.IsObserverRunning())
-           // {
-                // Der SurfaceObserver wird angewiesen das Updating vom SpatialMapping mesh zu unterlassen 
-                spatialMappingManager.StopObserver();
-           // }
-           // else {
-               // Debug.Log("Fehler: Observer schon gestoppt");
-           // }
+            // if (spatialMappingManager.IsObserverRunning())
+            // {
+            // Der SurfaceObserver wird angewiesen das Updating vom SpatialMapping mesh zu unterlassen 
+            spatialMappingManager.StopObserver();
+            // }
+            // else {
+            // Debug.Log("Fehler: Observer schon gestoppt");
+            // }
+        }
+    }
+
+    public void ScanFortsetzen() {
+        if (sm)
+        {
+            SpatialMappingStarten_Stoppen(true);
+            Debug.Log("sm aktiv");
+        }
+
+        else if (su)
+        {
+            UnderstandingFortsetzen();
+            Debug.Log("su aktiv");
+        }
+
+        else if (su && sm)
+        {
+            SpatialMappingStarten_Stoppen(true);
+            UnderstandingFortsetzen();
+            Debug.Log("beide aktiv");
+        }
+
+        else {
+            Debug.Log("Fehler beim ScanFortsetzen");
         }
     }
 
     //Befielt den SurfaceObserver zu stoppen und alle meshes zu cleanen
     public void AnwendungBeenden()
-    {   
-        spatialMappingManager.CleanupObserver();
+    {
+        scanManager.BClicked();
+        //spatialMappingManager.CleanupObserver();
     }
     /// <summary>
     /// ////////////////////////////////////////
     /// SpatialUnderstanding
     /// </summary>
-    public void UnderstandingStarten() {
+    public void UnderstandingStarten()
+    {
         // rufe Starten aus der Klasse ScanManager
         scanManager.SpatialUnderstandingStart();
+        su = true;
+    }
+
+    public void UnderstandingFortsetzen()
+    {
+        spatialUnderstandingCustomMesh.DrawProcessedMesh = true;
     }
 
     public void UnderstandingStoppen()
     {
         // rufe stoppen aus der Klasse ScanManager
-        scanManager.BClicked();
-        
+        //scanManager.BClicked();
+        spatialUnderstandingCustomMesh.DrawProcessedMesh = false;
+       
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Aus der Testklasse RoomMeshSaver vom Holotoolkit umgeschriebene und angepasste Methoden
@@ -189,7 +231,7 @@ public class UIController : MonoBehaviour {
     /// Saves meshes without any modifications during serialization.
     /// </summary>
     /// <param name="fileName">Name of the file, without path and extension.</param>
-     public static void SaveMeshesToWavefront(string fileName, IEnumerable<Mesh> meshes)
+    public static void SaveMeshesToWavefront(string fileName, IEnumerable<Mesh> meshes)
     {
         //if (!MakeExportDirectory())
         //  {
@@ -224,23 +266,19 @@ public class UIController : MonoBehaviour {
     }
 
     //Name verwirrend, wird noch umgeändert, praktisch dafür da, dass Mesh in obj abzuspeichern
-    public void getMeshObject() {
+    public void getMeshObject()
+    {
         textName = field.text;
         SaveMeshesToWavefront(textName, meshFilters);
-        Debug.Log("mesh gespeichert");
+        Debug.Log("mesh gespeichert" + textName);
     }
     //Momentan funktioniert die Texteingabe auf der Hololens nicht, deshalb diese Methode, die dafür sorgt, dass der Dateiname nicht Null ist
     public void meshSpeichernErzwingen()
     {
-        scanManager.BClicked();
-        textName = field.text;
-        SaveMeshesToWavefront(textName, meshFilters);
-        Debug.Log("mesh gespeichert b " + textName);
+       // scanManager.BClicked();
+        //textName = field.text;
+      //  SaveMeshesToWavefront(textName, meshFilters);
+       // Debug.Log("mesh gespeichert b " + textName);
     }
 
 }
-
-
-
-
-

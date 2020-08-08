@@ -633,10 +633,10 @@ PlayerSettings:
       HumanInterfaceDevice: False
       InputInjectionBrokered: False
       InternetClient: False
-      InternetClientServer: True
+      InternetClientServer: False
       Location: False
       LowLevelDevices: False
-      Microphone: True
+      Microphone: False
       MusicLibrary: False
       Objects3D: False
       OfflineMapsManagement: False
@@ -644,7 +644,7 @@ PlayerSettings:
       PhoneCallHistoryPublic: False
       PicturesLibrary: False
       PointOfService: False
-      PrivateNetworkClientServer: True
+      PrivateNetworkClientServer: False
       Proximity: False
       RecordedCallsFolder: False
       RemoteSystem: False

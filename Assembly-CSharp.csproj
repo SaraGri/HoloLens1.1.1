@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{781F4339-7DD8-ACEE-D973-546097DAF1E7}</ProjectGuid>
+    <ProjectGuid>{5415BEE5-8086-921C-1777-9C7104B5F262}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -310,10 +310,10 @@
      <Compile Include="Assets\KeyboardValueKey.cs" />
      <Compile Include="Assets\OBJExport\OBJExporter.cs" />
      <Compile Include="Assets\OBJExport\TestExporter.cs" />
-     <Compile Include="Assets\ObjExporter.cs" />
      <Compile Include="Assets\ScanManager.cs" />
      <Compile Include="Assets\test.cs" />
      <Compile Include="Assets\UIController.cs" />
+     <Compile Include="Assets\Voreinstellungen.cs" />
      <None Include="Assets\HoloToolkit\Utilities\Shaders\UnlitConfigurable.shader" />
      <None Include="Assets\HoloToolkit\SpatialUnderstanding\Materials\SpatialUnderstandingSurface.shader" />
      <None Include="Assets\HoloToolkit\SpatialMapping\Shaders\SpatialMappingTap.shader" />
@@ -352,25 +352,25 @@
      <None Include="Assets\HoloToolkit\Utilities\Shaders\UnlitConfigurable.cginc" />
      <None Include="Assets\HoloToolkit\UI\Shaders\3DTextShader.shader" />
  <Reference Include="Unity.Formats.Fbx.Editor">
- <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.Formats.Fbx.Editor.dll</HintPath>
+ <HintPath>C:/Users/netflincs/Desktop/Neuer Ordner (2)/sicherung2/Spatial-Recon-master/18_2_12f1_SR_HTK_1_5_7/SpartialMessure1/Library/ScriptAssemblies/Unity.Formats.Fbx.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.StandardEvents">
- <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+ <HintPath>C:/Users/netflincs/Desktop/Neuer Ordner (2)/sicherung2/Spatial-Recon-master/18_2_12f1_SR_HTK_1_5_7/SpartialMessure1/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/netflincs/Desktop/Neuer Ordner (2)/sicherung2/Spatial-Recon-master/18_2_12f1_SR_HTK_1_5_7/SpartialMessure1/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>C:/Users/netflincs/Desktop/Neuer Ordner (2)/sicherung2/Spatial-Recon-master/18_2_12f1_SR_HTK_1_5_7/SpartialMessure1/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Autodesk.Fbx">
- <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Autodesk.Fbx.dll</HintPath>
+ <HintPath>C:/Users/netflincs/Desktop/Neuer Ordner (2)/sicherung2/Spatial-Recon-master/18_2_12f1_SR_HTK_1_5_7/SpartialMessure1/Library/ScriptAssemblies/Autodesk.Fbx.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/Users/netflincs/Desktop/Neuer Ordner (2)/sicherung2/Spatial-Recon-master/18_2_12f1_SR_HTK_1_5_7/SpartialMessure1/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Formats.Fbx.Runtime">
- <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.Formats.Fbx.Runtime.dll</HintPath>
+ <HintPath>C:/Users/netflincs/Desktop/Neuer Ordner (2)/sicherung2/Spatial-Recon-master/18_2_12f1_SR_HTK_1_5_7/SpartialMessure1/Library/ScriptAssemblies/Unity.Formats.Fbx.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.12f1/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.AIModule.dll</HintPath>
