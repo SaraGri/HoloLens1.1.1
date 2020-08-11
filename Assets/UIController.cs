@@ -10,7 +10,12 @@ using UnityEditor;
 using UnityEngine.XR.WSA.Persistence;
 using UnityEngine.UI;
 
-
+#if WINDOWS_UWP
+using Windows.Storage;
+using System.Threading.Tasks;
+using Windows.Data.Xml.Dom;
+using System;
+#endif
 public class UIController : MonoBehaviour
 {
 
@@ -254,7 +259,7 @@ public class UIController : MonoBehaviour
         }
     }
 
-    private static string SerializeMeshes(IEnumerable<Mesh> meshes)
+    public static string SerializeMeshes(IEnumerable<Mesh> meshes)
     {
         StringWriter stream = new StringWriter();
         int offset = 0;
@@ -275,10 +280,32 @@ public class UIController : MonoBehaviour
     //Momentan funktioniert die Texteingabe auf der Hololens nicht, deshalb diese Methode, die dafür sorgt, dass der Dateiname nicht Null ist
     public void meshSpeichernErzwingen()
     {
-       // scanManager.BClicked();
+        // scanManager.BClicked();
         //textName = field.text;
-      //  SaveMeshesToWavefront(textName, meshFilters);
-       // Debug.Log("mesh gespeichert b " + textName);
+        //  SaveMeshesToWavefront(textName, meshFilters);
+        // Debug.Log("mesh gespeichert b " + textName);
+
+#if WINDOWS_UWP
+        WriteData();
+#endif
+
     }
+
+#if WINDOWS_UWP
+
+           
+async
+	void WriteData () {
+	
+	//Get local folder
+	StorageFile file = await Windows.Storage.DownloadsFolder.CreateFileAsync("shelloample.obj");
+	FileIO.WriteTextAsync(file,SerializeMeshes(meshFilters));
+
+
+
+}
+ 
+
+#endif
 
 }
