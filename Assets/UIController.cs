@@ -37,12 +37,15 @@ public class UIController : MonoBehaviour
 
 
     /// /////////////////////////////////////////
-
+    public string data;
     //ref to meshSaver
     public List<GameObject> meshobjects;
     private string textName;  // Meshdateiname
 
     private List<Mesh> meshFilters;
+
+    private List<MeshFilter> m;
+
     public InputField field; // für die Texteingabe
 
     private bool su, sm;
@@ -75,6 +78,8 @@ public class UIController : MonoBehaviour
         scanManager.ScanstateUpdate();
         // greife auf und speichere die Meshes vom SpatialUnderstanding in meshFilters
         meshFilters = SpatialMappingManager.Instance.GetMeshes();
+        m = SpatialMappingManager.Instance.GetMeshFilters();
+       // meshFilters = GetComponent<MeshFilter>().m;
     }
 
     /*  public void HandleSpatialMapping (bool drawSpatialMapping) {
@@ -202,6 +207,7 @@ public class UIController : MonoBehaviour
     /// <param name="offset">Index offset for handling multiple meshes in a single stream.</param>
     private static void SerializeMesh(Mesh mesh, TextWriter stream, ref int offset)
     {
+        //Mesh mesh = meshFilter.sharedMesh;
         // Write vertices to .obj file. Need to make sure the points are transformed so everything is at a single origin.
         foreach (Vector3 vertex in mesh.vertices)
         {
@@ -261,6 +267,15 @@ public class UIController : MonoBehaviour
 
     public static string SerializeMeshes(IEnumerable<Mesh> meshes)
     {
+       
+            // Serialize and write the meshes to the file.
+        byte[] data = SimpleMeshSerializer.Serialize(meshes);
+            //strea.Write(data, 0, data.Length);
+            //strea.Flush();
+        
+
+
+
         StringWriter stream = new StringWriter();
         int offset = 0;
         foreach (var mesh in meshes)
@@ -278,8 +293,10 @@ public class UIController : MonoBehaviour
         Debug.Log("mesh gespeichert" + textName);
     }
     //Momentan funktioniert die Texteingabe auf der Hololens nicht, deshalb diese Methode, die dafür sorgt, dass der Dateiname nicht Null ist
+    
     public void meshSpeichernErzwingen()
     {
+        data = SerializeMeshFilters(m);
         // scanManager.BClicked();
         //textName = field.text;
         //  SaveMeshesToWavefront(textName, meshFilters);
@@ -298,8 +315,8 @@ async
 	void WriteData () {
 	
 	//Get local folder
-	StorageFile file = await Windows.Storage.DownloadsFolder.CreateFileAsync("shelloample" + WavefrontFileExtension);
-	FileIO.WriteTextAsync(file,SerializeMeshes(meshFilters));
+	StorageFile file = await Windows.Storage.DownloadsFolder.CreateFileAsync("shkelloample" + WavefrontFileExtension);
+	FileIO.WriteTextAsync(file,data);
 
 
 
@@ -307,5 +324,61 @@ async
  
 
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
+    public static string SerializeMeshFilters(IEnumerable<MeshFilter> meshes)
+   {
+       StringWriter stream = new StringWriter();
+       int offset = 0;
+       foreach (var mesh in meshes)
+       {
+           SerializeMeshFilter2(mesh, stream, ref offset);
+       }
+       return stream.ToString();
+   }
+   public static void SerializeMeshFilter2(MeshFilter meshFilter, TextWriter stream, ref int offset)
+   {
+       Mesh mesh = meshFilter.sharedMesh;
+
+       // Write vertices to .obj file. Need to make sure the points are transformed so everything is at a single origin.
+       foreach (Vector3 vertex in mesh.vertices)
+       {
+           Vector3 pos = meshFilter.transform.TransformPoint(vertex);
+           stream.WriteLine(string.Format("v {0} {1} {2}", -pos.x, pos.y, pos.z));
+       }
+
+       // Write normals. Need to transform the direction.
+       foreach (Vector3 meshNormal in mesh.normals)
+       {
+           Vector3 normal = meshFilter.transform.TransformDirection(meshNormal);
+           stream.WriteLine(string.Format("vn {0} {1} {2}", normal.x, normal.y, normal.z));
+       }
+
+       // Write indices.
+       for (int s = 0, sLength = mesh.subMeshCount; s < sLength; ++s)
+       {
+           int[] indices = mesh.GetTriangles(s);
+           for (int i = 0, iLength = indices.Length - indices.Length % 3; i < iLength; i += 3)
+           {
+               // Format is "vertex index / material index / normal index"
+               stream.WriteLine(string.Format("f {0}//{0} {1}//{1} {2}//{2}",
+                   indices[i + 0] + 1 + offset,
+                   indices[i + 1] + 1 + offset,
+                   indices[i + 2] + 1 + offset));
+           }
+       }
+
+       offset += mesh.vertices.Length;
+   }
 
 }
