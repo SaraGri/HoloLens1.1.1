@@ -298,7 +298,7 @@ async
 	void WriteData () {
 	
 	//Get local folder
-	StorageFile file = await Windows.Storage.DownloadsFolder.CreateFileAsync("shelloample.obj");
+	StorageFile file = await Windows.Storage.DownloadsFolder.CreateFileAsync("shelloample" + WavefrontFileExtension);
 	FileIO.WriteTextAsync(file,SerializeMeshes(meshFilters));
 
 
