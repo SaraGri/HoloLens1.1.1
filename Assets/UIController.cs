@@ -35,7 +35,19 @@ public class UIController : MonoBehaviour
     private ScanManager scanManager;
     private SpatialMappingObserver surfaceObserver;
 
+    //////////////////
 
+    // UI-Elements with values (exept buttons)
+    
+    public Dropdown dropDownSliceGeometry;
+
+    public UnityEngine.UI.Toggle toggleSlice;
+    public bool isSlicingEnabled = false;
+
+    public bool isAnyUIObjectInFocus = false;
+    
+    public enum SelectedSliceGeometry { Triangle, Rectangle, Circle, Polygon };
+    public SelectedSliceGeometry selectedSliceGeometry;
     /// /////////////////////////////////////////
     public string data;
     //ref to meshSaver
@@ -64,6 +76,8 @@ public class UIController : MonoBehaviour
         //drawSpatialMapping = false;
         //drawSpatialUnderstanding = false;
         surfaceObserver = gameObject.GetComponent<SpatialMappingObserver>();
+
+        selectedSliceGeometry = SelectedSliceGeometry.Triangle;
 
         su = false;
         sm = false;
@@ -109,7 +123,54 @@ public class UIController : MonoBehaviour
            //   drawSpatialUnderstanding = true;
           }
       }*/
+    public void HandleSliceGeometry()
+    {
+        // Index:
+        // 0 = Triangle
+        // 1 = Rectangle
+        // 2 = Circle
+        // 3 = Polygon
+        int currentDropDownIndex = dropDownSliceGeometry.value;
 
+        switch (currentDropDownIndex)
+        {
+            case 0: // NONE
+                    //   Debug.Log("Triangle");
+                    //   Debug.Log(currentDropDownIndex);
+                selectedSliceGeometry = SelectedSliceGeometry.Triangle;
+                break;
+
+            case 1: // Triangle
+                    //  Debug.Log("Rectangle");
+                    //      Debug.Log(currentDropDownIndex);
+                selectedSliceGeometry = SelectedSliceGeometry.Rectangle;
+                break;
+
+            case 2: // Circle
+                     Debug.Log("Circle");
+                        Debug.Log(currentDropDownIndex);
+                selectedSliceGeometry = SelectedSliceGeometry.Circle;
+                break;
+
+            case 3: // Polygon
+                    //   Debug.Log("Polygon");
+                    //  Debug.Log(currentDropDownIndex);
+                selectedSliceGeometry = SelectedSliceGeometry.Polygon;
+                break;
+
+            default:
+                currentDropDownIndex = 0;
+                break;
+        }
+    }
+
+    public void HandleToggleSlice()
+    {
+        if (toggleSlice.isOn)
+            isSlicingEnabled = true;
+        else
+            isSlicingEnabled = false;
+    }
     ////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////
     //Methoden von mir

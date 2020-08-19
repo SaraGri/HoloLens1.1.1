@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{94D15BA9-813F-2E59-F2CC-188F55D8A847}</ProjectGuid>
+    <ProjectGuid>{781F4339-7DD8-ACEE-D973-546097DAF1E7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -311,7 +311,8 @@
      <Compile Include="Assets\OBJExport\OBJExporter.cs" />
      <Compile Include="Assets\OBJExport\TestExporter.cs" />
      <Compile Include="Assets\ScanManager.cs" />
-     <Compile Include="Assets\test.cs" />
+     <Compile Include="Assets\SlicedObject.cs" />
+     <Compile Include="Assets\Slicer.cs" />
      <Compile Include="Assets\UIController.cs" />
      <Compile Include="Assets\Voreinstellungen.cs" />
      <None Include="Assets\HoloToolkit\Utilities\Shaders\UnlitConfigurable.shader" />
@@ -352,25 +353,34 @@
      <None Include="Assets\HoloToolkit\Utilities\Shaders\UnlitConfigurable.cginc" />
      <None Include="Assets\HoloToolkit\UI\Shaders\3DTextShader.shader" />
  <Reference Include="Unity.Formats.Fbx.Editor">
- <HintPath>C:/Users/netflincs/Desktop/download Holokit/HoloLens1.1.1-master/HoloLens1.1.1-master/Library/ScriptAssemblies/Unity.Formats.Fbx.Editor.dll</HintPath>
+ <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.Formats.Fbx.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.Core.Editor">
+ <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.Core.Runtime">
+ <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.StandardEvents">
- <HintPath>C:/Users/netflincs/Desktop/download Holokit/HoloLens1.1.1-master/HoloLens1.1.1-master/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+ <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/netflincs/Desktop/download Holokit/HoloLens1.1.1-master/HoloLens1.1.1-master/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>C:/Users/netflincs/Desktop/download Holokit/HoloLens1.1.1-master/HoloLens1.1.1-master/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Autodesk.Fbx">
- <HintPath>C:/Users/netflincs/Desktop/download Holokit/HoloLens1.1.1-master/HoloLens1.1.1-master/Library/ScriptAssemblies/Autodesk.Fbx.dll</HintPath>
+ <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Autodesk.Fbx.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/netflincs/Desktop/download Holokit/HoloLens1.1.1-master/HoloLens1.1.1-master/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.Core.IncludePaths">
+ <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.RenderPipelines.Core.IncludePaths.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Formats.Fbx.Runtime">
- <HintPath>C:/Users/netflincs/Desktop/download Holokit/HoloLens1.1.1-master/HoloLens1.1.1-master/Library/ScriptAssemblies/Unity.Formats.Fbx.Runtime.dll</HintPath>
+ <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.Formats.Fbx.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.12f1/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.AIModule.dll</HintPath>
