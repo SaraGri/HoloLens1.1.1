@@ -190,3 +190,18 @@ public class PlaySpaceManager : Singleton<PlaySpaceManager>
         }
     }
 }
+
+/*
+    /// <summary>
+    /// Removes triangles from the spatial mapping surfaces.
+    /// </summary>
+    /// <param name="boundingObjects"></param>
+    private void RemoveVertices(IEnumerable<GameObject> boundingObjects)
+    {
+        RemoveSurfaceVertices removeVerts = RemoveSurfaceVertices.Instance;
+        if (removeVerts != null && removeVerts.enabled)
+        {
+            removeVerts.RemoveSurfaceVerticesWithinBounds(boundingObjects);
+        }
+    }
+*/

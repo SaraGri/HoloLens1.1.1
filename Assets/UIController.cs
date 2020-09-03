@@ -174,6 +174,71 @@ public class UIController : MonoBehaviour
     ////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////
     //Methoden von mir
+    ///////
+    ///
+    /// 
+    /// 
+    /// 
+    /// Umgeänderte Methoden
+    /// 
+    /// 
+
+  
+
+    //Scan Anhalten
+    public void buttonScanAnhalten() {
+        if (sm) { 
+            SpatialMappingStarten_Stoppen(false);
+            Debug.Log("sm deaktiv");
+        }
+
+        else if (su)
+        {
+            UnderstandingFortsetzenUndUnderstandingStoppen(false);
+            Debug.Log("su deaktiv");
+        }
+
+        else if (su && sm)
+        {
+            SpatialMappingStarten_Stoppen(false);
+            UnderstandingFortsetzenUndUnderstandingStoppen(false);
+            Debug.Log("beide deaktiv");
+        }
+
+        else
+        {
+            Debug.Log("Fehler beim ScanAnhalten");
+        }
+
+    }
+
+    public void buttonScanFortsetzen()
+    {
+        if (sm)
+        {
+            SpatialMappingStarten_Stoppen(true);
+            Debug.Log("sm aktiv");
+        }
+
+        else if (su)
+        {
+            UnderstandingFortsetzenUndUnderstandingStoppen(true);
+            Debug.Log("su aktiv");
+        }
+
+        else if (su && sm)
+        {
+            SpatialMappingStarten_Stoppen(true);
+            UnderstandingFortsetzenUndUnderstandingStoppen(true);
+            Debug.Log("beide aktiv");
+        }
+
+        else
+        {
+            Debug.Log("Fehler beim ScanFortsetzen");
+        }
+    }
+
 
     /// <summary>
     /// ///////////// SpatialMapping
@@ -185,48 +250,20 @@ public class UIController : MonoBehaviour
 
         if (starten)
         {
-            //MappingObserver starten (falls nicht schon gestartet wurde)
+            //MappingObserver starten (falls nicht autoStart in Unity gesetzt)
             spatialMappingManager.StartObserver();
             sm = true;
         }
 
         else
         {
-            // if (spatialMappingManager.IsObserverRunning())
-            // {
             // Der SurfaceObserver wird angewiesen das Updating vom SpatialMapping mesh zu unterlassen 
             spatialMappingManager.StopObserver();
-            // }
-            // else {
-            // Debug.Log("Fehler: Observer schon gestoppt");
-            // }
+            sm = false;
         }
     }
 
-    public void ScanFortsetzen() {
-        if (sm)
-        {
-            SpatialMappingStarten_Stoppen(true);
-            Debug.Log("sm aktiv");
-        }
-
-        else if (su)
-        {
-            UnderstandingFortsetzen();
-            Debug.Log("su aktiv");
-        }
-
-        else if (su && sm)
-        {
-            SpatialMappingStarten_Stoppen(true);
-            UnderstandingFortsetzen();
-            Debug.Log("beide aktiv");
-        }
-
-        else {
-            Debug.Log("Fehler beim ScanFortsetzen");
-        }
-    }
+  
 
     //Befielt den SurfaceObserver zu stoppen und alle meshes zu cleanen
     public void AnwendungBeenden()
@@ -245,18 +282,20 @@ public class UIController : MonoBehaviour
         su = true;
     }
 
-    public void UnderstandingFortsetzen()
+    private void UnderstandingFortsetzenUndUnderstandingStoppen(bool starten)
     {
-        spatialUnderstandingCustomMesh.DrawProcessedMesh = true;
+        spatialUnderstandingCustomMesh.DrawProcessedMesh = starten;
+        su = starten;
     }
 
-    public void UnderstandingStoppen()
+    /*private void UnderstandingStoppen()
     {
         // rufe stoppen aus der Klasse ScanManager
         //scanManager.BClicked();
         spatialUnderstandingCustomMesh.DrawProcessedMesh = false;
-       
-    }
+        su = false;
+
+    }*/
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Aus der Testklasse RoomMeshSaver vom Holotoolkit umgeschriebene und angepasste Methoden
 
