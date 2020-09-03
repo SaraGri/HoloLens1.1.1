@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{F9383CDA-E1EA-9521-F7E7-0730F13BDC61}</ProjectGuid>
+    <ProjectGuid>{13282984-A49D-7D43-1EAB-1286BAB8352B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -94,35 +94,11 @@
      <Compile Include="Assets\HoloToolkit\Utilities\Shaders\FastConfigurable\Editor\FastConfigurable2SidedGUI.cs" />
      <Compile Include="Assets\HoloToolkit\Utilities\Shaders\FastConfigurable\Editor\FastConfigurableGUI.cs" />
      <Compile Include="Assets\HoloToolkit\Utilities\Shaders\FastConfigurable\Editor\ShaderGUIUtils.cs" />
- <Reference Include="Unity.Formats.Fbx.Editor">
- <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.Formats.Fbx.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.Core.Editor">
- <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.Core.Runtime">
- <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
- </Reference>
  <Reference Include="UnityEditor.StandardEvents">
- <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
- </Reference>
- <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/netflincs/Desktop/Testanwendungen/sicherung - Kopie/Spatial-Recon-master/18_2_12f1_SR_HTK_1_5_7/SpartialMessure1/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Autodesk.Fbx">
- <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Autodesk.Fbx.dll</HintPath>
- </Reference>
- <Reference Include="Unity.TextMeshPro">
- <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.Core.IncludePaths">
- <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.RenderPipelines.Core.IncludePaths.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Formats.Fbx.Runtime">
- <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.Formats.Fbx.Runtime.dll</HintPath>
+ <HintPath>C:/Users/netflincs/Desktop/Testanwendungen/sicherung - Kopie/Spatial-Recon-master/18_2_12f1_SR_HTK_1_5_7/SpartialMessure1/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.12f1/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.AIModule.dll</HintPath>
@@ -379,9 +355,6 @@
  <Reference Include="UnityEditor.Purchasing">
  <HintPath>C:/Users/netflincs/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
  </Reference>
- <Reference Include="ICSharpCode.NRefactory">
- <HintPath>C:/Users/netflincs/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.render-pipelines.core@3.0.0-preview/CoreRP/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>C:/Users/netflincs/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
  </Reference>
@@ -415,7 +388,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{781F4339-7DD8-ACEE-D973-546097DAF1E7}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+      <Project>{5415BEE5-8086-921C-1777-9C7104B5F262}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

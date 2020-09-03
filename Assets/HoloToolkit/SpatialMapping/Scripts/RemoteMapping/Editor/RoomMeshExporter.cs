@@ -209,7 +209,7 @@ namespace HoloToolkit.Unity.SpatialMapping //Auffrischung von mir, ergänzt um S
         /// <param name="meshFilter">Contains the mesh to be transformed and serialized.</param>
         /// <param name="stream">Stream to write the transformed mesh into.</param>
         /// <param name="offset">Index offset for handling multiple meshes in a single stream.</param>
-        private static void SerializeMeshFilter(MeshFilter meshFilter, TextWriter stream, ref int offset)
+        private static void SerializeMeshFilter(MeshFilter meshFilter, TextWriter stream, ref int offset) 
         {
             Mesh mesh = meshFilter.sharedMesh;
 

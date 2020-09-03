@@ -112,3 +112,7 @@ C:\Users\netflincs\Desktop\download Holokit\testbutton\Spatial-Recon-master\18_2
 C:\Users\netflincs\Desktop\download Holokit\testbutton\Spatial-Recon-master\18_2_12f1_SR_HTK_1_5_7\SpartialMessure1\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\netflincs\Desktop\download Holokit\testbutton\Spatial-Recon-master\18_2_12f1_SR_HTK_1_5_7\SpartialMessure1\obj\Debug\Assembly-CSharp.dll
 C:\Users\netflincs\Desktop\download Holokit\testbutton\Spatial-Recon-master\18_2_12f1_SR_HTK_1_5_7\SpartialMessure1\obj\Debug\Assembly-CSharp.pdb
+C:\Users\netflincs\Desktop\Testanwendungen\sicherung - Kopie\Spatial-Recon-master\18_2_12f1_SR_HTK_1_5_7\SpartialMessure1\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Users\netflincs\Desktop\Testanwendungen\sicherung - Kopie\Spatial-Recon-master\18_2_12f1_SR_HTK_1_5_7\SpartialMessure1\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+C:\Users\netflincs\Desktop\Testanwendungen\sicherung - Kopie\Spatial-Recon-master\18_2_12f1_SR_HTK_1_5_7\SpartialMessure1\obj\Debug\Assembly-CSharp.dll
+C:\Users\netflincs\Desktop\Testanwendungen\sicherung - Kopie\Spatial-Recon-master\18_2_12f1_SR_HTK_1_5_7\SpartialMessure1\obj\Debug\Assembly-CSharp.pdb

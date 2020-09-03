@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using HoloToolkit.Unity;
 using HoloToolkit.Unity.InputModule;
 using UnityEngine;
@@ -6,9 +6,9 @@ using UnityEngine;
 public class ScanManager : MonoBehaviour //Handled den Air Tap Gesture
 {
     //Variable für den 3D Text vom Editor, Infomrationen an den User werden dadurch angezeigt
-    public TextMesh InstructionTextMesh;
+    //public TextMesh InstructionTextMesh;
     public Transform FloorPrefab;
-    public TestExporter exporter;
+   // public TestExporter exporter;
     bool once = true;
     // Use this for initialization
    public void SpatialUnderstandingStart()
@@ -56,17 +56,17 @@ public class ScanManager : MonoBehaviour //Handled den Air Tap Gesture
             case SpatialUnderstanding.ScanStates.ReadyToScan:
                 break;
             case SpatialUnderstanding.ScanStates.Scanning:
-                this.LogSurfaceState();
+             ///   this.LogSurfaceState();
                 break;
             case SpatialUnderstanding.ScanStates.Finishing:
-                this.InstructionTextMesh.text = "State: Finishing Scan";
+                //this.InstructionTextMesh.text = "State: Finishing Scan";
                 //if(once) {
                 //    exporter.Export("test.obj");
                 //    once = false;
                 //}
                 break;
             case SpatialUnderstanding.ScanStates.Done:
-                this.InstructionTextMesh.text = "State: Scan DONE";
+               // this.InstructionTextMesh.text = "State: Scan DONE";
                 //this.LogSurfaceState();
 //#if WINDOWS_UWP
   //              Windows.StorageFolder storageFolder = KnownFolders.Object3D;
@@ -84,7 +84,7 @@ public class ScanManager : MonoBehaviour //Handled den Air Tap Gesture
         if (SpatialUnderstandingDll.Imports.QueryPlayspaceStats(statsPtr) != 0)
         {
             var stats = SpatialUnderstanding.Instance.UnderstandingDLL.GetStaticPlayspaceStats();
-            this.InstructionTextMesh.text = string.Format("TotalSurfaceArea: {0:0.##} - WallSurfaceArea: {1:0.##} - HorizSurfaceArea: {2:0.##}", stats.TotalSurfaceArea, stats.WallSurfaceArea, stats.HorizSurfaceArea);
+           // this.InstructionTextMesh.text = string.Format("TotalSurfaceArea: {0:0.##} - WallSurfaceArea: {1:0.##} - HorizSurfaceArea: {2:0.##}", stats.TotalSurfaceArea, stats.WallSurfaceArea, stats.HorizSurfaceArea);
 
             var rayResult = SpatialUnderstanding.Instance.UnderstandingDLL.GetStaticRaycastResult();
             //this.InstructionTextMesh.text = rayResult.SurfaceType.ToString();
@@ -94,7 +94,7 @@ public class ScanManager : MonoBehaviour //Handled den Air Tap Gesture
     //Handelt den Air Tap um den Scanprocess zu beenden
     public void BClicked()
     {
-        this.InstructionTextMesh.text = "Requested Finish Scan";
+       // this.InstructionTextMesh.text = "Requested Finish Scan";
         Debug.Log("beenden");
         //Scan beenden, take all the scanned surfaces and merge them together
         SpatialUnderstanding.Instance.RequestFinishScan();
@@ -116,17 +116,17 @@ public class ScanManager : MonoBehaviour //Handled den Air Tap Gesture
         {
             Instantiate(this.FloorPrefab, _resultsTopology[0].position, Quaternion.LookRotation(_resultsTopology[0].normal, Vector3.up));
 
-            this.InstructionTextMesh.text = "Placed the hologram";
+           // this.InstructionTextMesh.text = "Placed the hologram";
         }
         else
         {
-            this.InstructionTextMesh.text = "I can't found the enough space to place the hologram.";
+           // this.InstructionTextMesh.text = "I can't found the enough space to place the hologram.";
         }
     }
 
     public void ScanstateAnzeigen() {
         if (SpatialUnderstanding.Instance.ScanState == SpatialUnderstanding.ScanStates.Done)
-        { this.InstructionTextMesh.text = "State: Scan DONE";
+        { //this.InstructionTextMesh.text = "State: Scan DONE";
             Debug.Log("scan fertig");
             //return true;
         }
@@ -135,4 +135,4 @@ public class ScanManager : MonoBehaviour //Handled den Air Tap Gesture
     }
 
     //public void Test() { }
-}
+}*/
