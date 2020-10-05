@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{5415BEE5-8086-921C-1777-9C7104B5F262}</ProjectGuid>
+    <ProjectGuid>{781F4339-7DD8-ACEE-D973-546097DAF1E7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -348,10 +348,10 @@
      <None Include="Assets\HoloToolkit\Utilities\Shaders\UnlitConfigurable.cginc" />
      <None Include="Assets\HoloToolkit\UI\Shaders\3DTextShader.shader" />
  <Reference Include="UnityEditor.StandardEvents">
- <HintPath>C:/Users/netflincs/Desktop/Testanwendungen/sicherung - Kopie/Spatial-Recon-master/18_2_12f1_SR_HTK_1_5_7/SpartialMessure1/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+ <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>C:/Users/netflincs/Desktop/Testanwendungen/sicherung - Kopie/Spatial-Recon-master/18_2_12f1_SR_HTK_1_5_7/SpartialMessure1/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>D:/GIT/HoloLens1.1.1/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.12f1/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.AIModule.dll</HintPath>

@@ -1,4 +1,5 @@
-﻿using HoloToolkit.Unity;
+﻿
+using HoloToolkit.Unity;
 using HoloToolkit.Unity.SpatialMapping;
 using System.Collections;
 using System.Collections.Generic;
@@ -53,6 +54,7 @@ public class UserSettings : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
+		this.keyboardEntry[0] = "-1";
 		if (keyboard != null)
 		{
 			keyboardEntry[index] = keyboard.text;
@@ -64,15 +66,17 @@ public class UserSettings : MonoBehaviour {
 		keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false, false, false, false);
 	}
 
-	private Vector3 stringToVector(int i) {
-		//https://answers.unity.com/questions/1134997/string-to-vector3.html
-		// split the items
-		string[] sInput = keyboardEntry[i].Split(',');
+	private Vector3 StringToVector(int i) {
+		//
+		//Quelle: https://answers.unity.com/questions/1134997/string-to-vector3.html
+		string[] sInput = keyboardEntry[i].Split('.');
 		Vector3 result = new Vector3(
 		float.Parse(sInput[0]),
 		float.Parse(sInput[1]),
 		float.Parse(sInput[2]));
 		return result;
+		//
+		//
 	}
 
 	public void getInputFieldIndex(int i)
@@ -140,8 +144,6 @@ public class UserSettings : MonoBehaviour {
 
 		getObserverType();
 		drawToggle();
-
-		//https://forum.unity.com/threads/converting-string-to-float.208213/
 		if (keyboardEntry[0] != null && keyboardEntry[0] !="") 
 		{
 			//Debug.Log(keyboardEntry[0] + "hallo");
@@ -156,12 +158,12 @@ public class UserSettings : MonoBehaviour {
 		
 		if (keyboardEntry[2] != null && keyboardEntry[2] != "")
 		{
-			setObservationVolume(stringToVector(2));
+			setObservationVolume(StringToVector(2));
 		}
 
 		if (keyboardEntry[3] != null && keyboardEntry[3] != "")
 		{
-			setOriginOfObservationVolume(stringToVector(3));
+			setOriginOfObservationVolume(StringToVector(3));
 		}
 
 
@@ -207,6 +209,14 @@ public class UserSettings : MonoBehaviour {
 		oType.gameObject.SetActive(b);
 	}
 
+	public void cancelInput()
+    {
+		for (int i = 0; i < keyboardEntry.Length; i++)
+		{
+			keyboardEntry[i] = null;
+		}
+	}
+
 	public void checkInput()
 	{
 		string testText = "";
@@ -214,41 +224,38 @@ public class UserSettings : MonoBehaviour {
 			testText = string.Concat (testText, keyboardEntry[index]);
 		}
 		string filePath = Path.Combine(Application.persistentDataPath, "testUserInput" );
-		using (TextWriter writer = File.CreateText(filePath)) //Streamwriter führt zu Pointerfehler beim speicher auf Applikation.persistentDatapath
+		using (TextWriter writer = File.CreateText(filePath)) 
 		{
 			writer.Write(testText);
 		}
 	}
 
-	private void userInformation(string inputFieldPlace) {
-		textForUserInformation.text += "Warning: invalid input in " + inputFieldPlace + "\n";
+	private void userInformation(string textForField) {
+		textForUserInformation.text += "Warning: invalid input in " + textForField + "\n";
 	}
 
-	/// <summary>
-	/// /////////////Voreinstellungen SpatialMappingObserver
-	/// </summary>
-	/// <param name="anzahl"></param>
+
+	/////////////////////////////////////////
+	// Voreinstellungen SpatialMappingManager
+	/////////////////////////////////////////
+
 	public void setTrianglesPerCubicMeter(float triangles)
 	{
-		if (100f < triangles && triangles < 1500f)
-		{
+		if (100f < triangles && triangles < 1500f) {
 			surfaceObserver.TrianglesPerCubicMeter = triangles;
 		}
 		else {
 			surfaceObserver.TrianglesPerCubicMeter = 500f;
 			userInformation("setTrianglesPerCubicMeter");
 		}
-		
 	}
 
 	public void setTimeBetweenUpdates(float time)
 	{
-		if (1 < time && time < 15)
-		{
+		if (1 < time && time < 15) {
 			surfaceObserver.TimeBetweenUpdates = time;
 		}
-		else
-		{
+		else {
 			surfaceObserver.TimeBetweenUpdates = 3.5f;
 			userInformation("setTimeBetweenUpdates");
 		}
@@ -259,21 +266,11 @@ public class UserSettings : MonoBehaviour {
 	{
 		Debug.Log(typem);
 		surfaceObserver.ObserverVolumeType = typem;
-		//userInformation("setObserverVolumeType");
 	}
 
 	public void setObservationVolume(Vector3 volumeObservation)
 	{
-		if (true) 
-		{
 			surfaceObserver.Extents = volumeObservation;
-		}
-		else
-		{
-			//surfaceObserver.Extents = Vector3.one * 10.0f;
-			//Debug.Log("invalid input");
-		}
-		
 	}
 
 	public void setOriginOfObservationVolume(Vector3 observationVolume)
@@ -286,20 +283,20 @@ public class UserSettings : MonoBehaviour {
 		surfaceObserver.Orientation = orientation;
 	}
 
-	////////////////////////////////////
-	/////////////////////////////////// Voreinstellungen SpatialMappingManager
+
+	/////////////////////////////////////////
+	// Voreinstellungen SpatialMappingManager
+	/////////////////////////////////////////
+    
 	public void setPhysicsLayer(int layer)
 	{
-		if (layer > 1 && layer < 100) 
-		{
+		if (layer > 1 && layer < 100) {
 			spatialMappingManager.PhysicsLayer = layer;
 		}
-		else
-		{
+		else {
 			spatialMappingManager.PhysicsLayer = 31;
 			userInformation("setPhysicsLayer");
 		}
-		
 	}
 
 	public void setDrawVisualMeshes(bool draw)
@@ -312,26 +309,25 @@ public class UserSettings : MonoBehaviour {
 		spatialMappingManager.CastShadows = shadows;
 	}
 
-	////////////////////////////////////
-	/////////////////////////////////// Voreinstellungen ObjectSurfaceObserver
-	///
+
+	/////////////////////////////////////////
+	// Voreinstellungen ObjectSurfaceObserver
+	/////////////////////////////////////////
 	public void setSimulatedUpdatePeriodInSeconds(float seconds)
 	{
-		if (seconds > - 3  && seconds < 5)
-		{
+		if (seconds > - 3  && seconds < 5) {
 			objectSurfaceObserver.SimulatedUpdatePeriodInSeconds = seconds;
 		}
-		else
-		{
+		else {
 			objectSurfaceObserver.SimulatedUpdatePeriodInSeconds = -1;
 			userInformation("setSimulatedUpdatePeriodInSeconds");
 		}
-
-		
 	}
 
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//SpatialUnderstanding Voreinstellungen
+
+	////////////////////////////////////////
+	// Voreinstellungen SpatialUnderstanding
+	////////////////////////////////////////
 
 	public void setAutoBeginScanning(bool auto)
 	{
@@ -340,60 +336,51 @@ public class UserSettings : MonoBehaviour {
 
 	public void setUpdatePeriod_DuringScanning(float period)
 	{
-		if (period > 1 && period < 5)
-		{
+		if (period > 1 && period < 5) {
 			spatialUnderstanding.UpdatePeriod_DuringScanning = period;
 		}
-		else
-		{
+		else {
 			spatialUnderstanding.UpdatePeriod_DuringScanning = 1.0f;
 			userInformation("setUpdatePeriod_DuringScanning");
 		}
-		
 	}
 
 	public void setUpdatePeriod_AfterScanning(float period)
 	{
-		if (period > 1 && period < 10)
-		{
+		if (period > 1 && period < 10) {
 			spatialUnderstanding.UpdatePeriod_AfterScanning = period;
 		}
-		else
-		{
+		else {
 			spatialUnderstanding.UpdatePeriod_AfterScanning = 4.0f;
 			userInformation("setUpdatePeriod_AfterScanning");
 		}
 	}
-	/// <summary>
-	/// /////////////////////////////// SpatialUnderstandingCostumMesh
-	/// </summary>
+
+
+	///////////////////////////////////////////////////
+	// Voreinstellungen SpatialUnderstandingCustomMesh
+	///////////////////////////////////////////////////
+    
 	public void setImportMeshPeriod(float import)
 	{
-
-		if (import > -1 && import < 10)
-		{
+		if (import > -1 && import < 10) {
 			spatialUnderstandingCustomMesh.ImportMeshPeriod = import;
 		}
-		else
-		{
+		else {
 			spatialUnderstandingCustomMesh.ImportMeshPeriod = 1.0f;
 			userInformation("setImportMeshPeriod");
 		}
-		
 	}
 
 	public void setMaxFrameTime(float maxFrameTime)
 	{
-		if (maxFrameTime > 0 && maxFrameTime < 10)
-		{
+		if (maxFrameTime > 0 && maxFrameTime < 10) {
 			spatialUnderstandingCustomMesh.MaxFrameTime = maxFrameTime;
 		}
-		else
-		{
+		else {
 			spatialUnderstandingCustomMesh.MaxFrameTime = 5.0f;
 			userInformation("setMaxFrameTime");
 		}
-		
 	}
 
 	public void setDrawProcessedMesh(bool drawMesh)
